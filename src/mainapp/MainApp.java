@@ -1,6 +1,6 @@
 package mainapp;
 
-import Eum.Categoria;
+import eum.Categoria;
 import models.Pokemon;
 import models.Usuario;
 import ui.Login;

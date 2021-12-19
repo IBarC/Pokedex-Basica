@@ -1,6 +1,6 @@
 package models;
 
-import Eum.Categoria;
+import eum.Categoria;
 
 public class Pokemon {
 	public int numero;

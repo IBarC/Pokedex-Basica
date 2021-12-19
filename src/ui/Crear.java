@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Eum.Categoria;
+import eum.Categoria;
 import models.Pokemon;
 import utils.Almacen;
 

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-import Eum.Categoria;
+import eum.Categoria;
 import utils.Almacen;
 
 import javax.swing.JTextField;

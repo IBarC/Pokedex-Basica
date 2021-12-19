@@ -1,4 +1,4 @@
-package Eum;
+package eum;
 
 public enum Categoria {
 	Semilla, Lagartija, Llama, Tortuguita, Tortuga, Armazón, Gusano, Capullo, Mariposa, Oruga, AbejaVeneno, Pajarito,
