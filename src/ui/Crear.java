@@ -207,16 +207,27 @@ public class Crear {
 				valido = true;
 			}
 		}
+		
+		int max = Almacen.pokemons.get(0).numero;
+		int i = 0;
+		int pos=0;
+		for(Pokemon p : Almacen.pokemons) {
+			if (max < p.numero) {
+				max = p.numero;
+				pos = i;
+			}
+			i++;
+		}
 
-		if (nPok < Almacen.pokemons.size() && valido) { // Creamos el pokemon en la posicion dada
-			Almacen.pokemons.add((nPok - 1),
+		if (nPok < max && valido) { // Creamos el pokemon en la posicion dada
+			Almacen.pokemons.add((pos),
 					new Pokemon(Integer.parseInt(textNum.getText()), textNombre.getText(), textTipo.getText(),
 							Double.parseDouble(textAltura.getText()), Double.parseDouble(textPeso.getText()),
 							Categoria.valueOf(cat), textHab.getText()));
 			JOptionPane.showMessageDialog(btnCrear, "Pokémon creado :)");
 			frCrear.dispose();
 			parent.setVisible(true);
-		} else if (nPok >= Almacen.pokemons.size() && valido) { // Creamos el pokemon en la última posición del array
+		} else if (nPok >= max && valido) { // Creamos el pokemon en la última posición del array
 			Almacen.pokemons.add(new Pokemon(Integer.parseInt(textNum.getText()), textNombre.getText(),
 					textTipo.getText(), Double.parseDouble(textAltura.getText()),
 					Double.parseDouble(textPeso.getText()), Categoria.valueOf(cat), textHab.getText()));

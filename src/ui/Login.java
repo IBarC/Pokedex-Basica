@@ -144,7 +144,7 @@ public class Login {
 		boolean usuCorrecto = false;
 		do {
 			if (Almacen.usuarios.get(i).nombre.equals(usu) && Almacen.usuarios.get(i).contr.equals(password)) {
-				Pokedex p = new Pokedex(usu, frLogin, 0);
+				Pokedex p = new Pokedex(usu, 0, frLogin);
 				Almacen.usuarios.get(i).setPokedex(p);
 				frLogin.setVisible(false); // Se oculta la visibilidad
 				usuCorrecto = true;

@@ -50,12 +50,16 @@ public class Pokedex {
 	 * @param parent
 	 * @param contPokemon
 	 */
-	public Pokedex(String usuario, JFrame parent, int contPokemon) {
+	public Pokedex(String usuario, int contPokemon, JFrame parent) {
 		this.usuario = usuario;
-		this.parent = parent;
 		this.contPokemon = contPokemon;
 		initialize();
 		this.frPokedex.setVisible(true);
+		this.parent = parent;
+	}
+
+	public void setParent(JFrame parent) {
+		this.parent = parent;
 	}
 
 	/**
@@ -210,8 +214,9 @@ public class Pokedex {
 	private void configureListeners() {
 		btnCerrarS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frPokedex.dispose();
 				parent.setVisible(true);
+				frPokedex.dispose();
+
 			}
 		});
 
@@ -220,11 +225,13 @@ public class Pokedex {
 				if (contPokemon + 1 == Almacen.pokemons.size()) {
 					contPokemon = 0;
 					frPokedex.dispose();
-					new Pokedex(usuario, frPokedex, contPokemon);
+					new Pokedex(usuario, contPokemon, parent);
+					setParent(frPokedex);
 				} else {
 					contPokemon++;
 					frPokedex.dispose();
-					new Pokedex(usuario, frPokedex, contPokemon);
+					new Pokedex(usuario, contPokemon, parent);
+					setParent(frPokedex);
 				}
 			}
 		});
@@ -234,11 +241,11 @@ public class Pokedex {
 				if (contPokemon == 0) {
 					contPokemon = Almacen.pokemons.size() - 1;
 					frPokedex.dispose();
-					new Pokedex(usuario, frPokedex, contPokemon);
+					new Pokedex(usuario, contPokemon, parent);
 				} else {
 					contPokemon--;
 					frPokedex.dispose();
-					new Pokedex(usuario, frPokedex, contPokemon);
+					new Pokedex(usuario, contPokemon, parent);
 				}
 			}
 		});
@@ -264,9 +271,9 @@ public class Pokedex {
 				JOptionPane.showMessageDialog(btnBorrar, "Pokémon borrado :(");
 
 				if (contPokemon == 0) {
-					new Pokedex(usuario, frPokedex, 0);
+					new Pokedex(usuario, 0, parent);
 				} else {
-					new Pokedex(usuario, frPokedex, contPokemon - 1);
+					new Pokedex(usuario, contPokemon - 1, parent);
 				}
 
 			}

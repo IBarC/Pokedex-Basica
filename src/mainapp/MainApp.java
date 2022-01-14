@@ -12,7 +12,7 @@ public class MainApp {
 
 		// Pokemosn y usuarios ya creados
 		// numero; nombre; tipo; altura; peso; categoria; habilidad
-		Almacen.pokemons.add(new Pokemon(1, "Bulvasur", "Planta", 0.5, 9.0, Categoria.Tortuguita, "Torrente"));
+		Almacen.pokemons.add(new Pokemon(1, "Bulbasur", "Planta", 0.5, 9.0, Categoria.Tortuguita, "Torrente"));
 		Almacen.pokemons.add(new Pokemon(4, "Charmander", "Fuego", 0.6, 8.5, Categoria.Lagartija, "MarLlamas"));
 		Almacen.pokemons.add(new Pokemon(7, "Squirtle", "Agua", 0.6, 8.5, Categoria.Lagartija, "MarLlamas"));
 
