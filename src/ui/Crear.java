@@ -215,6 +215,7 @@ public class Crear {
 			if (max < p.numero) {
 				max = p.numero;
 				pos = i;
+				break;
 			}
 			i++;
 		}

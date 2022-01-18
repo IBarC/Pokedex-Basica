@@ -2,11 +2,11 @@ package ui;
 
 import java.awt.Color;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import models.Pokemon;
 import utils.Almacen;
 
 import javax.swing.JButton;
