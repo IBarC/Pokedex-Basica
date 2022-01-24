@@ -19,6 +19,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.SwingConstants;
 
+import dao.UsuarioDAO;
+
 public class Login {
 
 	private JFrame frLogin;
@@ -30,12 +32,14 @@ public class Login {
 	private JButton registrarse;
 	private JPasswordField inputContr;
 	private JLabel titulo_1;
+	private UsuarioDAO usuarioDAO;
 
 	/**
 	 * Create the application.
 	 */
 	public Login() {
 		initialize();
+		this.usuarioDAO = new UsuarioDAO();
 		this.frLogin.setVisible(true);
 	}
 
@@ -111,7 +115,10 @@ public class Login {
 	private void configureListeners() {
 		inicioS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comprobarLogin();
+				String username = inputUsu.getText();
+				String password = new String(inputContr.getPassword());
+				boolean compLogin = usuarioDAO.login(username, password);
+				comprobarLogin(compLogin);
 			}
 		});
 
@@ -119,7 +126,10 @@ public class Login {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					comprobarLogin();
+					String username = inputUsu.getText();
+					String password = new String(inputContr.getPassword());
+					boolean compLogin = usuarioDAO.login(username, password);
+					comprobarLogin(compLogin);
 				}
 			}
 		});
@@ -136,14 +146,14 @@ public class Login {
 	 * Comprueba que el usuario y la contraseña se encuentra dentro de los usuarios
 	 * disponibles. Si es correcta te lleva a la pokedex de ese usuario
 	 */
-	private void comprobarLogin() {
+	private void comprobarLogin(boolean compLogin) {
 		String usu = inputUsu.getText();
 		String password = new String(inputContr.getPassword());
 
 		int i = 0;
 		boolean usuCorrecto = false;
 		do {
-			if (Almacen.usuarios.get(i).nombre.equals(usu) && Almacen.usuarios.get(i).contr.equals(password)) {
+			if (compLogin) {
 				Pokedex p = new Pokedex(usu, 0, frLogin);
 				Almacen.usuarios.get(i).setPokedex(p);
 				frLogin.setVisible(false); // Se oculta la visibilidad
