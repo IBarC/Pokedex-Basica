@@ -19,6 +19,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+import dao.UsuarioDAO;
+
 public class Registro {
 
 	private JFrame frRegistro;
@@ -33,6 +35,7 @@ public class Registro {
 	private JPasswordField inputRepContr;
 	private JFrame parent;
 	private JLabel lblTitulo_2;
+	private UsuarioDAO usuarioDAO;
 
 	/**
 	 * Crea la aplicación
@@ -41,6 +44,7 @@ public class Registro {
 	 */
 	public Registro(JFrame parent) {
 		this.parent = parent;
+		this.usuarioDAO = new UsuarioDAO();
 		initialize();
 		this.frRegistro.setVisible(true);
 	}
@@ -156,12 +160,19 @@ public class Registro {
 		String contr2 = new String(inputRepContr.getPassword());
 
 		if (contr.equals(contr2)) {
-			JOptionPane.showMessageDialog(registrate, "Usuario creado");
-			Almacen.usuarios.add(new Usuario(usuario, contr));
-			frRegistro.dispose();
-			parent.setVisible(true);
+			if(usuario.isEmpty() || contr.isEmpty() || contr2.isEmpty()) {
+				JOptionPane.showMessageDialog(registrate, "No puede haber campos vacios");
+			} else {
+				Usuario u = new Usuario(0, usuario, contr);
+				usuarioDAO.register(u);
+				JOptionPane.showMessageDialog(registrate, "Usuario creado");
+				frRegistro.dispose();
+				parent.setVisible(true);
+			}
+			//Almacen.usuarios.add(new Usuario(usuario, contr));
+			
 		} else {
-			JOptionPane.showMessageDialog(registrate, "Datos erroneos");
+			JOptionPane.showMessageDialog(registrate, "Las contraseñas no coinciden");
 		}
 	}
 }
