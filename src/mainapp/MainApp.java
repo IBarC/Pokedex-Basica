@@ -16,9 +16,6 @@ public class MainApp {
 		Almacen.pokemons.add(new Pokemon(4, "Charmander", "Fuego", 0.6, 8.5, Categoria.Lagartija, "Mar Llamas"));
 		Almacen.pokemons.add(new Pokemon(7, "Squirtle", "Agua", 0.6, 8.5, Categoria.Lagartija, "Mar Llamas"));
 
-		Almacen.usuarios.add(new Usuario("a", "a"));
-		Almacen.usuarios.add(new Usuario("b", "b"));
-
 		new Login(); // Emplieza el programa
 
 	}

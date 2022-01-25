@@ -10,5 +10,6 @@ CREATE TABLE `pokedex`.`users` (
 
 INSERT INTO `pokedex`.`users` (`usersname`, `password`) VALUES ('Irene', 'irene');
 INSERT INTO `pokedex`.`users` (`usersname`, `password`) VALUES ('Patata', 'patata');
+INSERT INTO `pokedex`.`users` (`usersname`, `password`) VALUES ('a', 'a');
 
 select * from users;
