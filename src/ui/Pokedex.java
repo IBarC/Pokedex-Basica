@@ -7,10 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import dao.PokemonDAO;
+import models.Pokemon;
 import utils.Almacen;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -42,6 +45,8 @@ public class Pokedex {
 	private JLabel lblMostrarCat;
 	private JLabel lblMostrarHab;
 	private int contPokemon;
+	private PokemonDAO pokemonDAO;
+	private ArrayList<Pokemon> pokemons;
 
 	/**
 	 * Crea la aplicación
@@ -51,9 +56,12 @@ public class Pokedex {
 	 * @param contPokemon
 	 */
 	public Pokedex(String usuario, int contPokemon, JFrame parent) {
+		this.pokemonDAO = new PokemonDAO();
+		this.pokemons = pokemonDAO.getAll();
+		initialize();
 		this.usuario = usuario;
 		this.contPokemon = contPokemon;
-		initialize();
+		
 		this.frPokedex.setVisible(true);
 		this.parent = parent;
 	}
@@ -171,37 +179,37 @@ public class Pokedex {
 		btnBorrar.setBounds(532, 331, 109, 23);
 		frPokedex.getContentPane().add(btnBorrar);
 
-		lblMostrarNum = new JLabel(Almacen.pokemons.get(contPokemon).numero + "");
+		lblMostrarNum = new JLabel(pokemons.get(contPokemon).numero + "");
 		lblMostrarNum.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarNum.setBounds(222, 129, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarNum);
 
-		lblMostrarTipo = new JLabel(Almacen.pokemons.get(contPokemon).tipo);
+		lblMostrarTipo = new JLabel(pokemons.get(contPokemon).tipo);
 		lblMostrarTipo.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarTipo.setBounds(222, 182, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarTipo);
 
-		lblMostrarPeso = new JLabel(Almacen.pokemons.get(contPokemon).peso + "");
+		lblMostrarPeso = new JLabel(pokemons.get(contPokemon).peso + "");
 		lblMostrarPeso.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarPeso.setBounds(222, 235, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarPeso);
 
-		lblMostrarNom = new JLabel(Almacen.pokemons.get(contPokemon).nombre);
+		lblMostrarNom = new JLabel(pokemons.get(contPokemon).nombre);
 		lblMostrarNom.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarNom.setBounds(414, 129, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarNom);
 
-		lblMostrarAlt = new JLabel(Almacen.pokemons.get(contPokemon).altura + "");
+		lblMostrarAlt = new JLabel(pokemons.get(contPokemon).altura + "");
 		lblMostrarAlt.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarAlt.setBounds(414, 182, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarAlt);
 
-		lblMostrarCat = new JLabel(Almacen.pokemons.get(contPokemon).getCategoria() + "");
+		lblMostrarCat = new JLabel(pokemons.get(contPokemon).categoria);
 		lblMostrarCat.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarCat.setBounds(414, 235, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarCat);
 
-		lblMostrarHab = new JLabel(Almacen.pokemons.get(contPokemon).habilidad);
+		lblMostrarHab = new JLabel(pokemons.get(contPokemon).habilidad);
 		lblMostrarHab.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		lblMostrarHab.setBounds(304, 288, 108, 23);
 		frPokedex.getContentPane().add(lblMostrarHab);

@@ -163,7 +163,7 @@ public class Actualizar {
 		frAct.getContentPane().add(lblCategoria);
 
 		textCat = new JTextField();
-		textCat.setText(String.valueOf(Almacen.pokemons.get(contPok).getCategoria()));
+		//textCat.setText(String.valueOf(Almacen.pokemons.get(contPok).getCategoria()));
 		textCat.setColumns(10);
 		textCat.setBounds(422, 238, 108, 20);
 		frAct.getContentPane().add(textCat);
@@ -210,7 +210,7 @@ public class Actualizar {
 
 		for (Categoria c : Categoria.values()) {
 			if (c.name().equalsIgnoreCase(cat)) {
-				Almacen.pokemons.get(contPok).setCategoria(Categoria.valueOf(cat));
+				//Almacen.pokemons.get(contPok).setCategoria(Categoria.valueOf(cat));
 				JOptionPane.showMessageDialog(btnAct, "Pokémon actualizado");
 				frAct.dispose();
 				parent.setVisible(true);

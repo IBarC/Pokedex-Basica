@@ -224,14 +224,14 @@ public class Crear {
 			Almacen.pokemons.add((pos),
 					new Pokemon(Integer.parseInt(textNum.getText()), textNombre.getText(), textTipo.getText(),
 							Double.parseDouble(textAltura.getText()), Double.parseDouble(textPeso.getText()),
-							Categoria.valueOf(cat), textHab.getText()));
+							String.valueOf(cat), textHab.getText()));
 			JOptionPane.showMessageDialog(btnCrear, "Pokémon creado :)");
 			frCrear.dispose();
 			parent.setVisible(true);
 		} else if (nPok >= max && valido) { // Creamos el pokemon en la última posición del array
 			Almacen.pokemons.add(new Pokemon(Integer.parseInt(textNum.getText()), textNombre.getText(),
 					textTipo.getText(), Double.parseDouble(textAltura.getText()),
-					Double.parseDouble(textPeso.getText()), Categoria.valueOf(cat), textHab.getText()));
+					Double.parseDouble(textPeso.getText()), String.valueOf(cat), textHab.getText()));
 			JOptionPane.showMessageDialog(btnCrear, "Pokémon creado :)");
 			frCrear.dispose();
 			parent.setVisible(true);
