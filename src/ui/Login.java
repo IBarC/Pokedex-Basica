@@ -118,7 +118,7 @@ public class Login {
 				String username = inputUsu.getText();
 				String password = new String(inputContr.getPassword());
 				boolean compLogin = usuarioDAO.login(username, password);
-				comprobarLogin(compLogin);
+				comprobarLogin(compLogin, username);
 			}
 		});
 
@@ -129,7 +129,7 @@ public class Login {
 					String username = inputUsu.getText();
 					String password = new String(inputContr.getPassword());
 					boolean compLogin = usuarioDAO.login(username, password);
-					comprobarLogin(compLogin);
+					comprobarLogin(compLogin, username);
 				}
 			}
 		});
@@ -146,16 +146,13 @@ public class Login {
 	 * Comprueba que el usuario y la contraseña se encuentra dentro de los usuarios
 	 * disponibles. Si es correcta te lleva a la pokedex de ese usuario
 	 */
-	private void comprobarLogin(boolean compLogin) {
-		String usu = inputUsu.getText();
-		String password = new String(inputContr.getPassword());
+	private void comprobarLogin(boolean compLogin, String username) {
 
 		int i = 0;
 		boolean usuCorrecto = false;
 		do {
 			if (compLogin) {
-				Pokedex p = new Pokedex(usu, 0, frLogin);
-				Almacen.usuarios.get(i).setPokedex(p);
+				new WelcomeView(username);
 				frLogin.setVisible(false); // Se oculta la visibilidad
 				usuCorrecto = true;
 			} else {
