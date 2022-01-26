@@ -29,6 +29,6 @@ INSERT INTO `pokedex`.`pokemons` (`id`, `nombre`, `tipo`, `altura`, `peso`, `cat
 VALUES ('1', 'Bulbasur', 'Planta', '0.5', '9', 'Tortuguita', 'Torrente');
 
 INSERT INTO `pokedex`.`pokemons` (`id`, `nombre`, `tipo`, `altura`, `peso`, `categoria`, `habilidad`) 
-Values ('2', 'Charmander', 'Fuego', '0.6', '8.5', 'Lagartija', 'Mar llamas');
+Values ('4', 'Charmander', 'Fuego', '0.6', '8.5', 'Lagartija', 'Mar llamas');
 
 select * from pokemons;

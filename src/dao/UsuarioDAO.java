@@ -60,5 +60,9 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void crear(Usuario usuario) {
+		
+	}
 
 }
