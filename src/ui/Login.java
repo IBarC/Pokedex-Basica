@@ -21,6 +21,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.SwingConstants;
 
 import dao.UsuarioDAO;
+import models.Usuario;
 
 public class Login {
 
@@ -118,7 +119,8 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				String username = inputUsu.getText();
 				String password = new String(inputContr.getPassword());
-				boolean compLogin = usuarioDAO.login(username, password);
+				Usuario usuario = new Usuario(0, username, password);
+				boolean compLogin = usuarioDAO.login(usuario);
 				comprobarLogin(compLogin, username);
 			}
 		});
@@ -129,7 +131,8 @@ public class Login {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					String username = inputUsu.getText();
 					String password = new String(inputContr.getPassword());
-					boolean compLogin = usuarioDAO.login(username, password);
+					Usuario usuario = new Usuario(0, username, password);
+					boolean compLogin = usuarioDAO.login(usuario);
 					comprobarLogin(compLogin, username);
 				}
 			}
