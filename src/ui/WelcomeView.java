@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -55,18 +54,13 @@ public class WelcomeView {
 		frame.getContentPane().add(lblTitulo_1);
 		
 		btnPokedex = new JButton("Pokedex");
-		btnPokedex.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new Pokedex(user, 0, frame);
-			}
-		});
 		btnPokedex.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnPokedex.setBounds(250, 145, 121, 47);
 		frame.getContentPane().add(btnPokedex);
 		
 		btnCambiarNombre = new JButton("Cambiar nombre");
 		btnCambiarNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCambiarNombre.setBounds(237, 215, 150, 47);
+		btnCambiarNombre.setBounds(220, 214, 176, 47);
 		frame.getContentPane().add(btnCambiarNombre);
 		
 		btnCerrarSesion = new JButton("Cerrar sesi\u00F3n");
@@ -79,6 +73,11 @@ public class WelcomeView {
 	}
 	
 	private void configureListeners() {
-		
+		btnPokedex.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Pokedex(user, 0, frame);
+				frame.setVisible(false);
+			}
+		});
 	}
 }

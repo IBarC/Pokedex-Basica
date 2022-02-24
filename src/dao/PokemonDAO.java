@@ -11,17 +11,17 @@ import models.Pokemon;
 
 public class PokemonDAO {
 
-	final String DB_URL = "jdbc:mysql://localhost/Pokedex";
+	final String DB_URL = "jdbc:mysql://localhost/pokedex";
 	final String USER = "Irene"; // Nombre de usuario que se crea en users and privileges
 	final String PASS = "irene";
 
 	public ArrayList<Pokemon> getAll() {
-		final String QUERY = "SELECT id, nombre, tipo, altura, peso, categoria, habilidad from pokemons limit 1";
+		final String QUERY = "SELECT id, nombre, tipo, altura, peso, categoria, habilidad from pokemons order by id";
 		ArrayList<Pokemon> pokemons = new ArrayList<Pokemon>();
 
-		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		try {Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(QUERY);) {
+				ResultSet rs = stmt.executeQuery(QUERY); 
 			while (rs.next()) {
 				// Display values
 				int id = rs.getInt("id");

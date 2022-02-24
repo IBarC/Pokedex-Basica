@@ -3,6 +3,7 @@ package ui;
 import java.awt.Color;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,12 +59,14 @@ public class Pokedex {
 	public Pokedex(String usuario, int contPokemon, JFrame parent) {
 		this.pokemonDAO = new PokemonDAO();
 		this.pokemons = pokemonDAO.getAll();
-		initialize();
+		
 		this.usuario = usuario;
 		this.contPokemon = contPokemon;
+		initialize();
 		
 		this.frPokedex.setVisible(true);
 		this.parent = parent;
+		
 	}
 
 	public void setParent(JFrame parent) {
@@ -230,7 +233,7 @@ public class Pokedex {
 
 		btnSigiente.addActionListener(new ActionListener() { // Que hace al darle a siguiente
 			public void actionPerformed(ActionEvent e) {
-				if (contPokemon + 1 == Almacen.pokemons.size()) {
+				if (contPokemon + 1 == pokemons.size()) {
 					contPokemon = 0;
 					frPokedex.dispose();
 					new Pokedex(usuario, contPokemon, parent);
@@ -247,7 +250,7 @@ public class Pokedex {
 		btnAtrás.addActionListener(new ActionListener() { // Que hace al darle a atrás
 			public void actionPerformed(ActionEvent e) {
 				if (contPokemon == 0) {
-					contPokemon = Almacen.pokemons.size() - 1;
+					contPokemon = pokemons.size() - 1;
 					frPokedex.dispose();
 					new Pokedex(usuario, contPokemon, parent);
 				} else {
