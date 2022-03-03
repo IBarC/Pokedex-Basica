@@ -48,8 +48,8 @@ public class UsuarioDAO {
 	}
 
 	public void register(Usuario usuario) {
-		final String INSERT = "INSERT INTO users (usersname, password) VALUES ('" + usuario.getUsersname() + "', '" + usuario.getPassword()
-				+ "')";
+		final String INSERT = "INSERT INTO users (usersname, password) VALUES ('" + usuario.getUsersname() + "', '"
+				+ usuario.getPassword() + "')";
 
 		try {
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -60,9 +60,19 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public void crear(Usuario usuario) {
-		
+
+	public boolean buscarNombre(String usuario) {
+		final String SELECT = "SELECT usersname from users where usersname = '" + usuario + "';";
+
+		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(SELECT);) {
+			return rs.next();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

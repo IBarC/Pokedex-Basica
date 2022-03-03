@@ -79,5 +79,12 @@ public class WelcomeView {
 				frame.setVisible(false);
 			}
 		});
+		
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				new Login();
+			}
+		});
 	}
 }

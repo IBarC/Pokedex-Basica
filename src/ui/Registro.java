@@ -162,6 +162,11 @@ public class Registro {
 		if (contr.equals(contr2)) {
 			if(usuario.isEmpty() || contr.isEmpty() || contr2.isEmpty()) {
 				JOptionPane.showMessageDialog(registrate, "No puede haber campos vacios");
+			} else if(usuarioDAO.buscarNombre(usuario)){
+				JOptionPane.showMessageDialog(registrate, "El nombre de usuario ya existe");
+				inputUsu.updateUI();
+				inputContr.updateUI();
+				inputRepContr.updateUI();
 			} else {
 				Usuario u = new Usuario(0, usuario, contr);
 				usuarioDAO.register(u);
@@ -175,4 +180,5 @@ public class Registro {
 			JOptionPane.showMessageDialog(registrate, "Las contraseñas no coinciden");
 		}
 	}
+	
 }
